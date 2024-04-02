@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\AcademyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BeltController;
+use App\Http\Controllers\AcademyController;
+use App\Http\Controllers\AthleteController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('login', [LoginController::class, 'login']);
 
 Route::apiResource('academies', AcademyController::class);
+Route::apiResource('belts', BeltController::class);
+Route::apiResource('athletes', AthleteController::class);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+});

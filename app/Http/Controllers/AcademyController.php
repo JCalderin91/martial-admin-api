@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Academy;
-use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Http\Requests\AcademyStoreRequest;
+use App\Http\Requests\AcademyUpdateRequest;
 
 class AcademyController extends ApiController
 {
@@ -21,7 +22,7 @@ class AcademyController extends ApiController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AcademyStoreRequest $request)
     {
         $academy = Academy::create($request->all());
 
@@ -42,7 +43,7 @@ class AcademyController extends ApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AcademyUpdateRequest $request, string $id)
     {
          $academy = Academy::findOrFail($id);
 
